@@ -3,33 +3,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 
-/* function ToDoList() {
-  const [toDo, setToDo] = useState("");
-  const [toDoError, setToDoError] = useState("");
-  const onChange = (event: React.FormEvent<HTMLInputElement>) => {
-    const {
-      currentTarget: { value },
-    } = event;
-    setToDoError("");
-    setToDo(value);
-  };
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if(toDo.length < 10 ) {
-        return setToDoError("To Do should be longer");
-    }
-    console.log("dd");
-  };
-  return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input onChange={onChange} value={toDo} placeholder="Write a to do" />
-        <button>Add</button>
-        {toDoError !== "" ? toDoError : null}
-      </form>
-    </div>
-  );
-}
+/*
 */
 
 type IformData = {
@@ -44,7 +18,7 @@ type IformData = {
     extraError?:string;
 };
 
-function ToDoList() {
+function ReactForm() {
     const { register , handleSubmit, formState : {errors}, setError} = useForm<IformData>();
     const onValid = (data:IformData) => {
         if(data.password1 !== data.password2) {
@@ -94,4 +68,3 @@ function ToDoList() {
       );
 }
 
-export default ToDoList;
