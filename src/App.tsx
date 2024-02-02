@@ -72,7 +72,6 @@ function App() {
   return ( 
     <>
     <GlobalStyle />
-      <ToDoList />
     </>
   );
 
