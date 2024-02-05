@@ -1,34 +1,16 @@
-import { atom , selector } from "recoil";
+import { atom } from "recoil";
 
 
-export enum Categories {
-  "TO_DO",
-  "DOING",
-  "DONE",
+interface IToDoState {
+    [key : string] : string[];
+
 }
 
-export interface IToDo {
-    text : string;
-    id : number;
-    category: Categories;
-  }
-  
-export const categoryState = atom<Categories>({
-  key : "category",
-  default : Categories.TO_DO,
-});
-
-export const toDoState = atom<IToDo[]>({
+export const toDoState = atom<IToDoState>({
     key : "toDo",
-    default : [],
-  });
-
-
-export const toDoSelector = selector({
-    key: "toDoSelector",
-    get : ({get}) => {
-      const toDos = get(toDoState);
-      const categoty = get(categoryState);
-      return toDos.filter((toDo) => toDo.category === categoty);
+    default: {
+        "TO DO" : ["밥먹기","똥싸기"],
+        Doing : ["김정우 바보","겨울바보","흔수바보"],
+        Done : ["태영공주님이랑밥먹기"],
     },
 });
