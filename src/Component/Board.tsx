@@ -4,8 +4,7 @@ import DragabbleCard from "./DragabbleCard";
 import { useForm } from "react-hook-form";
 import { ITodo, toDoState } from "../atoms"; 
 import { useSetRecoilState } from "recoil";
-import { useState } from "react";
-import { text } from "stream/consumers";
+
 
 const BoardWrapper = styled.div`
   background-color: ${(props) => props.theme.bordColor};
@@ -90,13 +89,13 @@ function Board({toDos, boardId} : IBoardProps){
               {...magic.droppableProps}
               >
               {toDos.map( (toDo, index) => (
-                <DragabbleCard 
+                <DragabbleCard
                   key={toDo.id} 
                   index={index} 
                   toDoId={toDo.id} 
                   toDoText={toDo.text}
                 />
-            ))}
+                ))}
             {magic.placeholder}
             </Area>
             )}

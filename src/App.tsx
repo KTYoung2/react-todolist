@@ -11,7 +11,7 @@ import Board from "./Component/Board";
 코드챌린지
 
 1.css 손보기
-2.task state local Storage에 저장
+2.task state local Storage에 저장 0
 3.task 삭제 ->("정말로 삭제하시겠습니까?")
 4.board 자체를 움직이게 만들기
 5.유저가 board 생성
@@ -113,6 +113,14 @@ a {
 
 `;
 
+const Title = styled.h1 `
+
+  font-size: 50px;
+  color: #FF8080;
+  font-weight: 900;
+  text-align: center;
+  padding-top: 15px;
+`;
 
 
 function App() {
@@ -153,6 +161,8 @@ function App() {
   };
   return ( 
     <>
+    <Title>AS I WANT,</Title>
+    <Title>MY DIARY!</Title>
     <DragDropContext onDragEnd={onDragEnd}>
      <Wrapper>
       <Boards>

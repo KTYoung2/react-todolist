@@ -1,7 +1,10 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useSetRecoilState } from "recoil";
+import { toDoState } from "../atoms";
 
 const Card = styled.div<{isDragging : boolean}>`
   width: 100%;
@@ -21,7 +24,18 @@ interface IDragabbleCardProps {
 }
 
 function DragabbleCard({ toDoId, toDoText, index } : IDragabbleCardProps) {
-
+  const setToDos = useSetRecoilState(toDoState);
+  const handleDelete = () => {
+        setToDos((allTodos) => {
+        const ToDoCopy = [...allTodos[toDoId]];
+        //1. sourc.index 에서 아이템 삭제
+        ToDoCopy.splice(toDoId, 1);
+        return {
+          ...allTodos,
+          [toDoId] : ToDoCopy, 
+        };
+      });
+    } 
 return (
     <Draggable draggableId={toDoId+""} index={index}>
     {(magic,snapshot) => ( 
@@ -31,6 +45,7 @@ return (
         {...magic.draggableProps}
         {...magic.dragHandleProps}>
           {toDoText}
+      <button onClick={handleDelete}><FontAwesomeIcon icon={faTrash} /></button>
       </Card>
       )}
     </Draggable>
