@@ -4,6 +4,8 @@ import DragabbleCard from "./DragabbleCard";
 import { useForm } from "react-hook-form";
 import { ITodo, toDoState } from "../atoms"; 
 import { useSetRecoilState } from "recoil";
+import { useState } from "react";
+import { text } from "stream/consumers";
 
 const BoardWrapper = styled.div`
   background-color: ${(props) => props.theme.bordColor};
@@ -49,7 +51,6 @@ interface IBoardProps{
 interface IForm {
   toDo : string;
 }
-
 
 
 function Board({toDos, boardId} : IBoardProps){
