@@ -26,15 +26,7 @@ interface IDragabbleCardProps {
 function DragabbleCard({ toDoId, toDoText, index } : IDragabbleCardProps) {
   const setToDos = useSetRecoilState(toDoState);
   const handleDelete = () => {
-        setToDos((allTodos) => {
-        const ToDoCopy = [...allTodos[toDoId]];
-        //1. sourc.index 에서 아이템 삭제
-        ToDoCopy.splice(toDoId, 1);
-        return {
-          ...allTodos,
-          [toDoId] : ToDoCopy, 
-        };
-      });
+       
     } 
 return (
     <Draggable draggableId={toDoId+""} index={index}>

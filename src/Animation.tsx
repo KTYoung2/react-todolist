@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { motion } from "framer-motion"
+import { motion, useMotionValue } from "framer-motion"
 import { useRef } from "react";
 
 const Wrapper = styled.div`
@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background:linear-gradient(135deg,#e09,#d0e);
 `;
 
 const BigBox = styled(motion.div)`
@@ -31,28 +32,13 @@ const Box = styled(motion.div)`
 `;
 
 
-const boxVariants = {
-   hover : {scale : 1.5, rotateZ : 90 },
-   tap : { scale : 1 , borderRadius : "100px" },
-  
-};
-
 
 
 function Animation() {
-    const bigBoxRef = useRef<HTMLDivElement>(null);
+    const x = useMotionValue(0);
     return (
         <Wrapper>
-            <BigBox ref={bigBoxRef}>
-                <Box
-                    drag
-                    dragSnapToOrigin
-                    dragConstraints={bigBoxRef}
-                    variants={boxVariants}
-                    whileHover="hover"
-                    whileTap="tap"
-                />
-            </BigBox>
+            <Box style={{ x }} drag="x" dragSnapToOrigin />    
         </Wrapper>
     );
 }

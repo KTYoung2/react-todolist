@@ -82,7 +82,7 @@ a {
 root.render(
   <ThemeProvider theme={darkTheme}>
     <RecoilRoot>
-      <App />
+      <Animation />
     </RecoilRoot>
   </ThemeProvider>
 );
