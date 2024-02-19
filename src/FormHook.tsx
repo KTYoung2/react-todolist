@@ -26,7 +26,13 @@ import { useForm } from "react-hook-form";
     -formState
     => 자세한 설명
     https://velog.io/@boyeon_jeong/React-Hook-Form-formState 
+
+    -setError
+    발생하는 문제에 따라 추가적으로 에러를 설정할 수 있게 도와준다.
+    ex. 예를 들자면  
+    비밀번호와 비밀번호 확인 문자열이 동일하지 않을 경우에 setError를 호출 하게 지정해 놓았다.
 */
+
 
 type FormData = {
     firstName: string;
@@ -34,18 +40,27 @@ type FormData = {
     email:string;
     passWord:string;
     passWord1:string;
+    extraError?: string;
 }
 
 function ToDoList() {
-    const { register , handleSubmit, formState :{errors} } = useForm<FormData>({
+    const { register , handleSubmit, formState :{errors}, setError } = useForm<FormData>({
         defaultValues : {
             //기본값도 설정가능
             email : "@naver.com",
         }
     });
-    const onValid = (data:any) => {
-        console.log(data);
-    }
+    const onValid = (data:FormData) => {
+        if(data.passWord !== data.passWord1) {
+            setError(
+                "passWord1", 
+                { message : "페스워드가 틀림"}, 
+                //shouldFocus : 내가 고른 input에 강제로 Focus 할 수 있음.
+                {shouldFocus : true},
+                );
+        }
+        setError("extraError", { message : "서버 오프라인님"});
+    };
     return ( 
       <div>
         <form 
@@ -73,7 +88,12 @@ function ToDoList() {
                     required: {
                     value : true,
                     message : "이름을 적어주세요",
-                } })}
+                },
+                // (현제 받은 값에 대하여.) 내가 원하는 규칙으로 유효성 검사 가능.
+                validate : {
+                    noFuck : (value) => value.includes("fuck") ? "욕설은 사용할 수 없습니다." : true, 
+                },
+                })}
                 placeholder="First Name"/>
                 <span style={{color:"red"}}>
                     {errors?.firstName?.message}
@@ -99,7 +119,13 @@ function ToDoList() {
             <input 
                 {...register("passWord1", { required: true , minLength: 5 })}
                 placeholder="PassWord Confirm"/>
+                  <span style={{color:"red"}}>
+                    {errors?.passWord1?.message}
+                </span>
             <button>Add</button>
+            <span style={{color:"red"}}>
+                    {errors?.extraError?.message}
+                </span>
         </form>
       </div>
     );
