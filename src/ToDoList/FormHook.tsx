@@ -59,14 +59,14 @@ function ToDoList() {
                 {shouldFocus : true},
                 );
         }
-        setError("extraError", { message : "서버 오프라인님"});
+        //setError("extraError", { message : "서버 오프라인님"});
     };
     return ( 
       <div>
         <form 
             style={{display:"flex", flexDirection:"column"}}
             onSubmit={handleSubmit(onValid)}>
-            <input 
+            <input         //input name
                 {...register("email", { 
                 /* html required 설정을 해서 보호받을 수 있지만, 보호 수준이 낮아서
                     js로  { required: true } 더 강한 보호를 받을 수 있고,
