@@ -1,7 +1,34 @@
 import { atom, selector } from "recoil";
 
 
-export enum Categories {
+
+/*
+    enums 열거형은 TypeSctipt가 제공하는 기능 중 하나.
+    이름이 있는 상수들의 집합을 정의 할 수 있다
+    열거형을 사용하면 의도를 문서화 하거나 구분 되는 사례 집합을 더 쉽게
+    만들 수 있다. 
+    TypeSctipt 는 숫자와 문자열- 기반 열거형을 제공한다.
+    
+    숫자열거형
+    enums Direction {
+        UP = 1,
+        DOWN,
+        LEFT,
+        RIGHT
+    }
+
+    문자열거형
+     enums Direction {
+        UP : "UP",
+        DOWN: "DOWN",
+        LEFT: " LEFT",
+    }
+
+        등등...
+
+*/
+
+export const enum Categories {
     "TO_DO" = "TO_DO",
     "DOING" = "DOING",
     "DONE" = "DONE",
