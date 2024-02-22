@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom/client';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { darkTheme } from './Theme';
-import Animation from './Animation';
+import Gestures from './Animation/Gestures';
+import MotionValue from './Animation/MotionValue';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root')as HTMLElement);
@@ -82,7 +84,7 @@ root.render(
   <ThemeProvider theme={darkTheme}>
     <RecoilRoot>
       <GlobalStyle />
-      <Animation />
+      <MotionValue />
     </RecoilRoot>
   </ThemeProvider>
 );
