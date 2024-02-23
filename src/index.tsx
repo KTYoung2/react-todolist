@@ -5,6 +5,12 @@ import { ThemeProvider, createGlobalStyle } from 'styled-components';
 import { darkTheme } from './Theme';
 import Gestures from './Animation/Gestures';
 import MotionValue from './Animation/MotionValue';
+import Svg from './Animation/Svg';
+import Presence from './Animation/Presence';
+import Silder from './Animation/Silder';
+import Layout from './Animation/Layout';
+import SelectCard from './Animation/SelectCard';
+import Challenge from './Animation/Challenge';
 
 
 
@@ -84,7 +90,7 @@ root.render(
   <ThemeProvider theme={darkTheme}>
     <RecoilRoot>
       <GlobalStyle />
-      <MotionValue />
+      <Challenge />
     </RecoilRoot>
   </ThemeProvider>
 );
