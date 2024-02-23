@@ -73,6 +73,7 @@ function Challenge() {
     const [btnClick, setBtnClick] = useState(false);
     const toggle = () => setBtnClick((prev)=> !prev);
     const [clickId, setClickId] = useState<null | string>(null);
+
     return (
         <Wrapper>
             <Grid>
@@ -81,9 +82,8 @@ function Challenge() {
                         whileHover={{scale: 1.1}}
                         key={n} 
                         layoutId={n} 
-                        // {()=> setClickId(n)(함수)} 클릭했을 때 이벤트 발생
                         onClick={()=> setClickId(n)}>
-                    {!btnClick ? <Circle layoutId="circle"/> : null}
+                        {!btnClick ? <Circle layoutId="circle"/> : null}
                     </Box>
             ))}
             </Grid>
